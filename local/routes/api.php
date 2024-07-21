@@ -1,10 +1,9 @@
 <?php
 
 use Bitrix\Main\Routing\RoutingConfigurator;
+use Ms\Main\Controllers\TestController;
 
 return function (RoutingConfigurator $routes) {
 
-    $routes->get('/test', function(){
-        return 11;
-    });
+    $routes->get('/test', [TestController::class, 'index']);
 };

@@ -1,11 +1,28 @@
 <?
 
-namespace Bitrix\D7\Controllers;
+namespace Ms\Main\Controllers;
 
+use Bitrix\Main\Engine\ActionFilter\Csrf;
+use \Bitrix\Main\Engine\Controller;
 use \Bitrix\Main\Error;
 
-class Item extends \Bitrix\Main\Engine\Controller
+class TestController extends Controller
 {
+	// Csrf
+	public function configureActions(): array
+    {
+        return [
+            'index' => [
+                'prefilters' => [
+                    new Csrf(false),
+                ],
+            ],
+        ];
+    }
+
+	public function indexAction(){
+		return 112;
+	}
 	// public function addAction(array $fields):? array
 	// {
 	// 	$item = Item::add($fields);
