@@ -30,8 +30,8 @@ class ms_base extends CModule
 
         global $DB, $APPLICATION, $step;
 
-        ModuleManager::registerModule($this->MODULE_ID);
-        Loader::includeModule($this->MODULE_ID);
+        RegisterModule($this->MODULE_ID);
+        RegisterModuleDependences('main', 'OnPageStart', $this->MODULE_ID);
 
         $APPLICATION->IncludeAdminFile('Установка модуля ' . $this->MODULE_ID, __DIR__ . '/step.php');
     }
@@ -40,15 +40,16 @@ class ms_base extends CModule
     {
         global $DB, $APPLICATION, $step;
 
-        ModuleManager::UnRegisterModule($this->MODULE_ID);
+        UnRegisterModuleDependences('main', 'OnPageStart', $this->MODULE_ID);
+        UnRegisterModule($this->MODULE_ID);
 
-        $this->deleteOptions();
+        // $this->deleteOptions();
 
         $APPLICATION->IncludeAdminFile( 'Удаление модуля ' . $this->MODULE_ID, __DIR__ . " /unstep.php");
     }
 
-    public function deleteOptions()
-    {
-        Option::delete($this->MODULE_ID);
-    }
+    // public function deleteOptions()
+    // {
+    //     Option::delete($this->MODULE_ID);
+    // }
 }

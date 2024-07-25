@@ -3,7 +3,7 @@
 return [
     'controllers' => [
         'value' => [
-            'defaultNamespace' => '\\Ms\\Main\\Controllers'
+            'defaultNamespace' => '\Ms\Base\Main\Controllers'
         ],
         'readonly' => false
     ]

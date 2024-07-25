@@ -1,22 +1,24 @@
 <?php
 
 
-namespace Bitrix\D7\Models;
+namespace Ms\Base\Main\Models;
 
 use Bitrix\Main\Type\Contract\Arrayable;
 use Bitrix\Main\Entity;
 
-class TestModel extends Entity\DataManager implements Arrayable 
+class NewsModel extends Entity\DataManager implements Arrayable 
 {
-    // public static function getTableName(){
-
-    // }
+    public static function getTableName(){
+        return 'highload_news';
+    }
 
     protected ?int $id;
 
 
     public function __construct(int $id = null)
     {
+        // HighloadBlockTable::getList();
+
         $this->id = $id;
     }
 
